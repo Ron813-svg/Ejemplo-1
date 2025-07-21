@@ -16,7 +16,7 @@ export default function Home({ navigation }) {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../../assets/users.png')}
+        source={require('../../assets/users.jpg')}
         style={styles.image}
       />
       <Text style={styles.title}>Bienvenido</Text>
