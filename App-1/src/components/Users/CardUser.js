@@ -1,46 +1,25 @@
-import { StyleSheet, Text, View } from "react-native";
- 
-const CardUser = ({ user }) => {
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+
+const CardUser = ({ user, onUpdate, onDelete }) => {
   return (
-        <View style={styles.card}>
-          <Text style={styles.cardTitle}>{user.nombre}</Text>
-          <Text style={styles.cardText}>Edad: {user.edad}</Text>
-          <Text style={styles.cardText}>Correo: {user.correo}</Text>
-        </View>
-   );
-}
- 
+    <View style={styles.card}>
+      <Text style={styles.cardTitle}>{user.nombre}</Text>
+      <Text style={styles.cardText}>Edad: {user.edad}</Text>
+      <Text style={styles.cardText}>Correo: {user.correo}</Text>
+
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.updateButton} onPress={() => onUpdate(user)}>
+          <Text style={styles.buttonText}>Actualizar</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.deleteButton} onPress={() => onDelete(user)}>
+          <Text style={styles.buttonText}>Eliminar</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#EAD8C0',
-    paddingHorizontal: 20,
-    paddingTop: 40
-  },
-  listContainer: {
-    paddingBottom: 30,
-  },
-  title: {
-    fontSize: 26,
-    fontWeight: 'bold',
-    color: '#5C3D2E',
-    textAlign: 'center',
-    marginBottom: 5
-  },
-  subtitle: {
-    fontSize: 16,
-    fontWeight: '500',
-    color: '#5C3D2E',
-    textAlign: 'center',
-    marginBottom: 10
-  },
-  counterText: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#3B2C24',
-    textAlign: 'center',
-    marginBottom: 10
-  },
   card: {
     backgroundColor: '#FFF',
     borderRadius: 12,
@@ -61,7 +40,29 @@ const styles = StyleSheet.create({
   cardText: {
     fontSize: 16,
     color: '#3B2C24'
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 15,
+  },
+  updateButton: {
+    backgroundColor: '#1976D2', // Azul
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    borderRadius: 8,
+  },
+  deleteButton: {
+    backgroundColor: '#D32F2F', // Rojo
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    borderRadius: 8,
+  },
+  buttonText: {
+    color: '#FFF',
+    fontWeight: 'bold',
+    fontSize: 14,
   }
 });
- 
+
 export default CardUser;
